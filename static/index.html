@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Tracker Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>TRACKER STUDIO</h1>
+                <p>VISION CONTROL PANEL</p>
+            </header>
+
+            <div class="control-scroll">
+                <div class="control-group">
+                    <h3>REGION & SHAPE</h3>
+                    <label for="shape-select">Shape Type</label>
+                    <select id="shape-select">
+                        <option>Basic Rectangle</option>
+                        <option>Circle</option>
+                        <option>L-Frame</option>
+                        <option>Crosshair</option>
+                    </select>
+
+                    <div class="color-picker-row">
+                        <label for="box-color">Box/Shape Color</label>
+                        <input type="color" id="box-color" value="#00ff00">
+                    </div>
+
+                    <label for="stroke-width">Stroke Width <span class="val">2px</span></label>
+                    <input type="range" id="stroke-width" min="1" max="10" value="2">
+                </div>
+
+                <div class="control-group">
+                    <h3>CONNECTIONS</h3>
+                    <label for="conn-select">Mode</label>
+                    <select id="conn-select">
+                        <option>None</option>
+                        <option>Sequential (Line)</option>
+                        <option>Central Hub</option>
+                    </select>
+
+                    <div class="color-picker-row">
+                        <label for="conn-color">Connection Line Color</label>
+                        <input type="color" id="conn-color" value="#ff9600">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>TEXT & LABELS</h3>
+                    <label for="label-type">Label Type</label>
+                    <select id="label-type">
+                        <option value="none">None</option>
+                        <option value="index">Tracking Index (#1, #2)</option>
+                        <option value="custom">Custom Text</option>
+                    </select>
+
+                    <div id="custom-text-wrapper" style="display: none; margin-top: 10px;">
+                        <input type="text" id="custom-text-input" placeholder="Type custom label..." class="text-input">
+                    </div>
+
+                    <div class="color-picker-row">
+                        <label for="text-color">Text Color</label>
+                        <input type="color" id="text-color" value="#ffffff">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>TRACKING LOGIC</h3>
+                    <label for="max-blobs">Max Objects <span class="val">32</span></label>
+                    <input type="range" id="max-blobs" min="1" max="128" value="32">
+
+                    <label for="min-size">Ignore Below <span class="val">64px</span></label>
+                    <input type="range" id="min-size" min="16" max="256" value="64">
+                </div>
+            </div>
+        </aside>
+
+        <main class="workspace">
+            <div class="upload-zone" id="upload-zone">
+                <div class="upload-content">
+                    <span class="upload-icon">⛌</span>
+                    <h2 id="upload-title">DROP VIDEO ARCHIVE</h2>
+                    <p id="upload-subtitle">MP4, MOV, or AVI up to 500MB</p>
+                    <button class="btn-outline" id="browse-btn">BROWSE FILES</button>
+                </div>
+            </div>
+
+            <div class="preview-zone" id="preview-zone" style="display: none;">
+                <video id="result-player" controls autoplay loop></video>
+            </div>
+
+            <div class="action-bar">
+                <button class="btn-primary" id="render-btn">INITIATE RENDER SEQUENCE</button>
+                <a href="#" class="btn-success" id="download-btn" style="display: none;" download="tracker_studio_export.mp4">DOWNLOAD FINAL VIDEO</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
